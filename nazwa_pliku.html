@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forever and ever</title>
+    <style>
+        body {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: black;
+            margin-bottom: 20px;
+            font-family: "Georgia", serif;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .image-input {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .clickable-image {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Forever and ever</h1>
+
+    <div class="container">
+        <!-- Obraz 1 z polem do wpisywania tekstu -->
+        <div>
+            <img src="twoj_obraz1.png" alt="Obraz 1" width="300" class="clickable-image" onclick="showInputField()">
+            <input type="text" class="image-input" id="inputField" placeholder="Wpisz coś" style="display: none;">
+        </div>
+
+        <!-- Obraz 2, który zmienia się w GIF i odtwarza muzykę po kliknięciu -->
+        <div>
+            <img src="twoj_obraz2.png" alt="Obraz 2" width="300" class="clickable-image" onclick="playGifAndMusic()">
+            <audio id="audioPlayer" src="twoj_gif.mp4" preload="auto"></audio>
+        </div>
+    </div>
+
+    <script>
+        function showInputField() {
+            document.getElementById('inputField').style.display = 'block';
+        }
+
+        function playGifAndMusic() {
+            const secondImage = document.querySelectorAll('.clickable-image')[1];
+            secondImage.src = 'twoj_gif.gif';  // Zamienia obraz na GIF
+            
+            const audio = document.getElementById('audioPlayer');
+            audio.loop = false;  // Muzyka nie odtwarza się w pętli
+            audio.play();
+        }
+    </script>
+
+</body>
+</html>
